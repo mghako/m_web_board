@@ -10,17 +10,21 @@
                     </div>
                 </div>
                 <!-- boards list section -->
+                @foreach($boards->chunk(3) as $board)
                 <div class="row justify-content-center">
-                    <div class="col-md-3">
+                    @foreach($board as $data)
+                    <div class="col-md-3 my-3">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <h5 class="card-title">{{ $data->title }}</h5>
+                                <p class="card-text">{{ $data->short_description }}</p>
+                                <a href="#" class="btn btn-primary">See more</a>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
+                @endforeach
             </div>
         </div>
         <div class="separator separator-bottom separator-skew zindex-100">

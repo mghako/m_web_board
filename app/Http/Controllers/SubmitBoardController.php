@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Board;
+use App\Http\Requests\SubmitBoardRequest;
+use App\Mail\BoardSubmitted;
 use App\SubmitBoard;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class SubmitBoardController extends Controller
 {
@@ -33,9 +37,11 @@ class SubmitBoardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SubmitBoardRequest $request, Board $board)
     {
-        //
+        $board->create($request->all());
+        Mail::to(auth()->user())->send(new BoardSubmitted($board));
+        return redirect()->route('submit-board.create')->withStatus(__('Board submitted ! We will review it and publish asap.'));
     }
 
     /**

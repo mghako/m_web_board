@@ -1,6 +1,6 @@
 <nav class="navbar navbar-top navbar-horizontal navbar-expand-md navbar-dark">
     <div class="container px-4">
-        <a class="navbar-brand" href="{{ route('home') }}">
+        <a class="navbar-brand" href="{{ route('index') }}">
             <!-- <img src="{{ asset('argon') }}/img/brand/white.png" /> -->
             <span class="text-white">MBoard</span>
         </a>
@@ -13,7 +13,8 @@
                 <div class="row">
                     <div class="col-6 collapse-brand">
                         <a href="{{ route('home') }}">
-                            <img src="{{ asset('argon') }}/img/brand/blue.png">
+                            <!-- <img src="{{ asset('argon') }}/img/brand/blue.png"> -->
+                            <span class="text-white">MBoard</span>
                         </a>
                     </div>
                     <div class="col-6 collapse-close">
@@ -27,9 +28,9 @@
             <!-- Navbar items -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="{{ route('home') }}">
-                        <i class="ni ni-planet"></i>
-                        <span class="nav-link-inner--text">{{ __('Dashboard') }}</span>
+                    <a class="nav-link nav-link-icon" href="{{ route('index') }}">
+                        <i class="ni ni-single-copy-04"></i>
+                        <span class="nav-link-inner--text">{{ __('Boards') }}</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -45,9 +46,9 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="{{ route('profile.edit') }}">
-                        <i class="ni ni-single-02"></i>
-                        <span class="nav-link-inner--text">{{ __('Profile') }}</span>
+                    <a class="nav-link nav-link-icon" href="{{ route('submit-board.create') }}">
+                        <i class="ni ni-send"></i>
+                        <span class="nav-link-inner--text">{{ __('Submit Board') }}</span>
                     </a>
                 </li>
             </ul>
