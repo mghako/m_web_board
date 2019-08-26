@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Board;
+use App\Http\Requests\BoardRequest;
+use App\Jobs\ProcessNewBoard;
 use Illuminate\Http\Request;
 
 class BoardController extends Controller
@@ -12,6 +14,10 @@ class BoardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        return $this->middleware('auth');
+    }
     public function index()
     {
         //
@@ -24,7 +30,8 @@ class BoardController extends Controller
      */
     public function create()
     {
-        //
+        $categories = \App\Category::all();
+        return view('boards.create', compact('categories'));
     }
 
     /**
@@ -33,9 +40,11 @@ class BoardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BoardRequest $request, Board $board)
     {
-        //
+        $board = $board->create($request->all());
+        ProcessNewBoard::dispatch($board)->delay(now()->addSeconds(10));
+        return redirect()->route('board.create')->withStatus(__('Board submitted ! We will review it and publish asap.'));
     }
 
     /**

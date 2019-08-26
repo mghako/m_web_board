@@ -46,7 +46,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="{{ route('submit-board.create') }}">
+                    <a class="nav-link nav-link-icon" href="{{ route('board.create') }}">
                         <i class="ni ni-send"></i>
                         <span class="nav-link-inner--text">{{ __('Submit Board') }}</span>
                     </a>

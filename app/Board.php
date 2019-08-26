@@ -14,6 +14,6 @@ class Board extends Model
         return $this->belongsTo('App\User', 'owner_id');
     }
     public function category(){
-        return $this->belongsTo('App\Category');
+        return $this->hasOne('App\Category');
     }
 }

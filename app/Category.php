@@ -10,6 +10,6 @@ class Category extends Model
         'name','short_description'
     ];
     public function boards(){
-        return $this->hasMany('App\Board');
+        return $this->belongsTo('App\Board');
     }
 }

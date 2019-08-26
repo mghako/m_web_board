@@ -11,6 +11,9 @@
 |
 */
 
+use App\Mail\NewBoardCreatedMail;
+use Illuminate\Support\Facades\Mail;
+
 Route::get('/', 'PageController@index')->name('index');
 Auth::routes();
 
@@ -23,4 +26,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 });
 
-Route::resource('submit-board', 'SubmitBoardController');
+Route::resource('board', 'BoardController');
+
+Route::get('/mail', function() {
+	$board = App\Board::first();
+	Mail::to('mail@mghako.com')->send(new NewBoardCreatedMail($board));
+	return redirect()->route('index');
+});
