@@ -33,3 +33,5 @@ Route::get('/mail', function() {
 	Mail::to('mail@mghako.com')->send(new NewBoardCreatedMail($board));
 	return redirect()->route('index');
 });
+
+Route::get('reviewboard', 'BoardController@review');

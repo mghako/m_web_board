@@ -24,6 +24,7 @@ class CreateBoardsTable extends Migration
             $table->string('demo_url')->nullable();
             $table->string('source_code_url')->nullable();
             $table->string('social_network_url')->nullable();
+            $table->boolean('status')->default(false);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

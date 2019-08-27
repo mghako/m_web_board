@@ -5,7 +5,7 @@
     <div class="container mt--8 pb-5">
         <!-- Table -->
         <div class="row justify-content-center">
-            <div class="col-12">
+            <div class="col-8">
                 @if (session('status'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('status') }}
@@ -15,6 +15,8 @@
                     </div>
                 @endif
             </div>
+        </div>
+        <div class="row justify-content-center">
             <div class="col-lg-6 col-md-8">
                 <div class="card bg-secondary shadow border-0">
                     <div class="card-body px-lg-5 py-lg-5">

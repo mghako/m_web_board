@@ -21,6 +21,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $boards = \App\Board::with('category')->latest()->get();
+        return view('dashboard', compact('boards'));
     }
 }

@@ -94,4 +94,5 @@ class BoardController extends Controller
     {
         //
     }
+
 }

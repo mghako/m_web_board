@@ -80,22 +80,22 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('index') }}">
+                    <a class="nav-link active" href="{{ route('index') }}">
                     <i class="fas fa-eye text-success"></i> {{ __('View Page') }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">
+                    <a class="nav-link active" href="{{ route('home') }}">
                         <i class="ni ni-tv-2 text-primary"></i> {{ __('Dashboard') }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                    <a class="nav-link active" href="#navbar-user-setting" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-user-setting">
                         <i class="fas fa-users-cog" style="color: #f4645f;"></i>
-                        <span class="nav-link-text" style="color: #f4645f;">{{ __('User Settings') }}</span>
+                        <span class="nav-link-text">{{ __('User Settings') }}</span>
                     </a>
 
-                    <div class="collapse show" id="navbar-examples">
+                    <div class="collapse" id="navbar-user-setting">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('profile.edit') }}">
@@ -109,12 +109,26 @@
                             </li>
                         </ul>
                     </div>
+                    <a class="nav-link active" href="#navbar-setting" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-setting">
+                        <i class="fas fa-cogs text-primary""></i>
+                        <span class="nav-link-text">{{ __('Settings') }}</span>
+                    </a>
+                    <!-- Board review Setting -->
+                    <div class="collapse" id="navbar-setting">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('board.create') }}">
+                                    {{ __('Add Board') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
 
                
                 <li class="nav-item mb-5" style="position: absolute; bottom: 0;">
-                    <a class="nav-link" href="https://www.creative-tim.com/product/argon-dashboard-pro-laravel" target="_blank">
-                        <i class="ni ni-cloud-download-95"></i> Upgrade to PRO
+                    <a class="nav-link" href="https://mghako.com" target="_blank">
+                        <i class="fas fa-code"></i> Developed by mghako
                     </a>
                 </li>
             </ul>
