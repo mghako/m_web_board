@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Board;
 use App\Http\Requests\BoardRequest;
 use App\Jobs\ProcessNewBoard;
+use App\Jobs\SendMailToUserNewBoardCreated;
 use Illuminate\Http\Request;
 
 class BoardController extends Controller
@@ -44,7 +45,9 @@ class BoardController extends Controller
     {
         $board = $board->create($request->all());
         ProcessNewBoard::dispatch($board)->delay(now()->addSeconds(10));
-        return redirect()->route('board.create')->withStatus(__('Board submitted ! We will review it and publish asap.'));
+        $user = auth()->user();
+        SendMailToUserNewBoardCreated::dispatch($user)->delay(now()->addSeconds(5));
+        return redirect()->route('board.create')->withStatus(__('Board Created ! Admins will review it and publish ASAP.'));
     }
 
     /**

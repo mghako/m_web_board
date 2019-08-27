@@ -2,8 +2,8 @@
 
 namespace App\Jobs;
 
-use App\Board;
-use App\Mail\NewBoardCreatedMail;
+use App\Mail\NewBoardCreatedMailToUser;
+use App\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -11,19 +11,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Support\Facades\Mail;
 
-class ProcessNewBoard implements ShouldQueue
+class SendMailToUserNewBoardCreated implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-    protected $board;
+    protected $user;
     /**
      * Create a new job instance.
      *
      * @return void
      */
-   
-    public function __construct(Board $board)
+    public function __construct(User $user)
     {
-        $this->board = $board;
+        $this->user = $user;
     }
 
     /**
@@ -33,9 +32,6 @@ class ProcessNewBoard implements ShouldQueue
      */
     public function handle()
     {
-        // $board = \App\Board::findOrFail($this->board);
-        Mail::to('mail@mghako.com')->send(new NewBoardCreatedMail($this->board));
-        
-        logger('board create - '.  $this->board->title);
+        Mail::to($this->user->email)->send(new NewBoardCreatedMailToUser($this->user));
     }
 }
