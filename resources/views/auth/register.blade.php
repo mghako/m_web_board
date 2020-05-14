@@ -41,16 +41,16 @@
                                     </span>
                                 @endif
                             </div>
-                            <div class="form-group{{ $errors->has('Username') ? ' has-danger' : '' }}">
+                            <div class="form-group{{ $errors->has('username') ? ' has-danger' : '' }}">
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
                                     </div>
-                                    <input class="form-control{{ $errors->has('Username') ? ' is-invalid' : '' }}" placeholder="{{ __('Username') }}" type="text" name="Username" value="{{ old('Username') }}" required autofocus>
+                                    <input class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" placeholder="{{ __('Username') }}" type="text" name="username" value="{{ old('username') }}" required autofocus>
                                 </div>
-                                @if ($errors->has('Username'))
+                                @if ($errors->has('username'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('Username') }}</strong>
+                                        <strong>{{ $errors->first('username') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -88,9 +88,7 @@
                                     <input class="form-control" placeholder="{{ __('Confirm Password') }}" type="password" name="password_confirmation" required>
                                 </div>
                             </div>
-                            <div class="text-muted font-italic">
-                                <small>{{ __('password strength') }}: <span class="text-success font-weight-700">{{ __('strong') }}strong</span></small>
-                            </div>
+                            
                             <div class="row my-4">
                                 <div class="col-12">
                                     <div class="custom-control custom-control-alternative custom-checkbox">

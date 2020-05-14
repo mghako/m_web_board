@@ -15,6 +15,7 @@ use App\Mail\NewBoardCreatedMail;
 use Illuminate\Support\Facades\Mail;
 
 Route::get('/', 'PageController@index')->name('index');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
